@@ -1,0 +1,38 @@
+@page
+@model Teams.Pages_Teams.UpdateTeamModel
+
+@{
+    ViewData["Title"] = "Update Team";
+}
+<h1>Edit</h1>
+
+<h4>Team</h4>
+<hr />
+<form method="post">
+    <input type="hidden" asp-for="Team.TeamID">
+    <div class="row mb-3">
+        <div class="col-4">
+            <label asp-for="Team.TeamName" class="form-label"></label>
+            <textarea asp-for="Team.TeamName" class="form-control"></textarea>
+            <span asp-validation-for="Team.TeamName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-4">
+            <label asp-for="Team.PlayerID" class="control-label"></label>
+            <select asp-for="Team.PlayerID" asp-items="Model.PlayersDropDown" class="form-select">
+                <option value="">Choose...</option>
+            </select>
+            <span asp-validation-for="Team.PlayerID" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
